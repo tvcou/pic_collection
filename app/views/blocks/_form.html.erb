@@ -1,0 +1,21 @@
+<%= form_for @block do |f| %>
+  <p>
+    <%= f.label :name %> <%= f.text_field :name %> <br />
+    <% if @block.errors.any? %>
+      <%= @block.errors.messages[:name][0] %>
+    <% end %>
+    <%= f.label :memo %> <%= f.text_field :memo %> <br />
+    <% if @block.errors.any? %>
+      <%= @block.errors.messages[:memo][0] %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <p>
+    --- for debug ------------------------<br />
+    <%= @block.inspect %><br />
+    <%= @block.errors.inspect %><br />
+    -------------------------------------------<br />
+  </p>
+<% end %>
