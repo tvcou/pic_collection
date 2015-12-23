@@ -2,4 +2,11 @@
 
 <div>
   <%= @block.memo %>
+
+  <% if @block.pic? %>
+    <div>
+      <%= image_tag @block.pic.url %>
+    </div>
+  <% end %> 
+ 
 </div>
