@@ -1,13 +1,9 @@
 <h1>Blocks</h1>
 
-<ul>
   <% @blocks.each do |block| %>
-    <li>
-      <%= link_to block.name, block_path(block.id) %>
-      <%= link_to "[edit]", edit_block_path(block.id) %>
-      <%= link_to "[del]", block_path(block.id), method: :delete, data: { confirm: "are you sure?" } %>
-    </li>
+    <% if block.pic? %>
+      <div>
+        <%= image_tag block.pic.url %>
+      </div>
+    <% end %>
   <% end %>
-</ul>
-
-<p><%= link_to "Add New", new_block_path %></p>
