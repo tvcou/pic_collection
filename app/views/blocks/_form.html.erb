@@ -8,6 +8,13 @@
     <% if @block.errors.any? %>
       <%= @block.errors.messages[:memo][0] %>
     <% end %>
+
+    <% if @block.pic? %>
+        <%= image_tag @block.pic.url %>
+    <% end %>
+    <%= f.file_field :pic %>
+    <%= f.hidden_field :pic_cache %>
+
   </p>
   <p>
     <%= f.submit %>
