@@ -6,6 +6,10 @@ class BlocksController < ApplicationController
     @blocks = Block.all
   end
 
+  def collection
+    @blocks = Block.all
+  end
+
   def show
   end
 
