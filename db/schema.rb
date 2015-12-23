@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204151225) do
+ActiveRecord::Schema.define(version: 20151223031405) do
 
   create_table "blocks", force: :cascade do |t|
     t.string   "name"
     t.string   "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "pic"
   end
 
 end
