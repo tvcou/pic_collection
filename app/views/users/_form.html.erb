@@ -1,0 +1,22 @@
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :name %> <%= f.text_field :name %> <br />
+    <% if @user.errors.any? %>
+      <%= @user.errors.messages[:name][0] %>
+    <% end %>
+    <%= f.label :email %> <%= f.text_field :email %> <br />
+    <% if @user.errors.any? %>
+      <%= @user.errors.messages[:email][0] %>
+    <% end %>
+
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <p>
+    --- for debug ------------------------<br />
+    <%= @user.inspect %><br />
+    <%= @user.errors.inspect %><br />
+    -------------------------------------------<br />
+  </p>
+<% end %>
