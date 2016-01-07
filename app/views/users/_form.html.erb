@@ -8,12 +8,20 @@
     <% if @user.errors.any? %>
       <%= @user.errors.messages[:email][0] %>
     <% end %>
+    <%= f.label :password %> <%= f.text_field :password %> <br />
+    <% if @user.errors.any? %>
+      <%= @user.errors.messages[:password][0] %>
+    <% end %>
+    <%= f.label :password_confirmation %> <%= f.text_field :password_confirmation %> <br />
+    <% if @user.errors.any? %>
+      <%= @user.errors.messages[:password_confirmation][0] %>
+    <% end %>
 
   </p>
   <p>
     <%= f.submit %>
   </p>
-  <p>
+  <
     --- for debug ------------------------<br />
     <%= @user.inspect %><br />
     <%= @user.errors.inspect %><br />
