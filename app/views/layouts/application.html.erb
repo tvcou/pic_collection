@@ -9,6 +9,16 @@
 <body>
 
 <%= image_tag "logo.png" %>
+
+<ul>
+  <li><%= link_to "Home", root_path %></li>
+  <% if logged_in? %>
+    <li><%= link_to "Users", users_path %></li>
+    <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+  <% else %>
+    <li><%= link_to "Log in", login_path %></li>
+  <% end %>
+</ul>
  
 <%= yield %>
  
