@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-  belongs_to :block
   has_secure_password
+  has_many :blocks
 end

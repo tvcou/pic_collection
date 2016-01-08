@@ -7,6 +7,6 @@ class Block < ActiveRecord::Base
     length: { minimum: 3, message: "短すぎ！" }
   validates :memo, presence: true
 
-  has_many :users
+  belongs_to :user
 
 end
