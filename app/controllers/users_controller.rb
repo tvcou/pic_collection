@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @userblocks = Block.where(user_id: @user)
+
+    logger.fatal "------------------"
+    logger.debug @userblocks.inspect
+    logger.fatal "------------------"
   end
 
   def new
