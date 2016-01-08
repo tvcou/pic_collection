@@ -19,6 +19,9 @@ class BlocksController < ApplicationController
 
   def create
     @block = Block.new(block_params)
+    if logged_in?
+      @block.user_id = session[:user_id]
+    end
     if @block.save
       redirect_to blocks_path
     else

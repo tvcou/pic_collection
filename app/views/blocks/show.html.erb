@@ -1,7 +1,10 @@
 <h1><%= @block.name %></h1>
 
 <div>
-  <%= @block.memo %>
+  <ul>
+    <li><%= @block.memo %></li>
+    <li><%= @block.user_id %></li>
+  </ul>
 
   <% if @block.pic? %>
     <div>
