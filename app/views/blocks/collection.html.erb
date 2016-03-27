@@ -1,26 +1,88 @@
+
 <style type="text/css">
-<!-- 
-.centered { margin: 0 auto; }
-#container{
-    background: #eee;
+#photos {
+  margin-top : 20px;
 }
-.box {
-    margin: 5px;
-    padding: 5px;
-    float: left;
-    background: #eee;
+#photos .item {
+  display : block;
+  float   : left;
+  width   : 282px;
+  color   : #333333;
 }
-.col { width: 160px; height: 200px;}
--->
+#photos .item.half {
+  width   : 564px;
+}
+#photos .item:hover {
+  color           : skyblue;
+  text-decoration : none;
+}
+#photos .item .inner {
+  padding : 5px;
+}
+#photos .item .item-inner {
+  padding       : 10px;
+  border-radius : 6px;
+  background    : rgba(255,255,255,0.8);
+  box-shadow    : 0 0 6px rgba(0,0,0,0.4);
+}
+#photos .item img {
+  width  : 100%;
+  height : auto;
+}
+#photoonitem .title {
+  margin-top  : 10px;
+  font-family : "Dosis",'メイリオ', Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", 'ＭＳ Ｐゴシック', sans-serif;
+  font-size   : 18px;
+  font-weight : bold;
+}
+#photos .item .caption {
+  margin : 0;
+}
 </style>
 
 
 <h1>Blocks</h1>
 
 <div id="container" class="centered">
-  <% @blocks.each do |block| %>
+  <div id="photos" class="cwclearfix">
+
+  <% @blocks.first(1).each do |block| %>
     <% if block.pic? %>
-      <div class="box col"><%= image_tag block.pic.url %></div>
+      <a class="item half" href="<%= block_path(block.id) %>" data-lightbox="choice" data-title="aa">
+        <div class="inner">
+          <div class="item-inner">
+            <p class="title"><%= block.name %></p>
+            <%= image_tag(block.pic.url , :class => "img-thumbnail")%>
+            <p class="caption"><%= block.memo %></p>
+          </div>
+        </div>
+      </a>
     <% end %>
   <% end %>
+
+  <% @blocks.drop(1).each do |block| %>
+    <% if block.pic? %>
+      <a class="item" href="<%= block_path(block.id) %>" data-lightbox="choice" data-title="aa">
+        <div class="inner">
+          <div class="item-inner">
+            <p class="title"><%= block.name %></p>
+            <%= image_tag(block.pic.url , :class => "img-thumbnail")%>
+            <p class="caption"><%= block.memo %></p>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  <% end %>
+
+  </div>
 </div>
+
+<script>
+  // jquery.masorny.js
+  $("#photos").imagesLoaded(function(){
+    $("#photos").masonry({
+    itemSelector : '.item',
+    columnWidth  : 282
+    });
+  });
+</script>
