@@ -1,0 +1,10 @@
+rails g acts_as_taggable_on:migration
+は前のバージョンで、
+
+現在は
+rake acts_as_taggable_on_engine:install:migrations
+
+と書いてありました。
+https://github.com/mbleigh/acts-as-taggable-on
+
+
