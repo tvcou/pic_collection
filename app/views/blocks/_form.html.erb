@@ -4,6 +4,12 @@
     <% if @block.errors.any? %>
       <%= @block.errors.messages[:name][0] %>
     <% end %>
+
+    <%= f.label :tag_list %> <%= f.text_field :tag_list %> <br />
+    <% if @block.errors.any? %>
+      <%= @block.errors.messages[:tag_list][0] %>
+    <% end %>
+
     <%= f.label :memo %> <%= f.text_field :memo %> <br />
     <% if @block.errors.any? %>
       <%= @block.errors.messages[:memo][0] %>

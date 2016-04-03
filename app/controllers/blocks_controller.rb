@@ -46,7 +46,7 @@ class BlocksController < ApplicationController
   end
 
   private def block_params
-    params[:block].permit(:name, :memo, :pic, :pic_cache) 
+    params[:block].permit(:name, :memo, :pic, :pic_cache, :tag_list) 
   end
 
   def set_block
