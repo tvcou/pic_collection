@@ -7,7 +7,13 @@ class BlocksController < ApplicationController
   end
 
   def collection
-    @blocks = Block.all
+    if params[:q].blank?
+      @blocks = Block.all
+    else
+      aaa = params[:q]
+      logger.debug aaa.inspect
+      @blocks = Block.tagged_with( aaa )
+    end
   end
 
   def show

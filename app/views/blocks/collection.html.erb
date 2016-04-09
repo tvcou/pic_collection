@@ -43,6 +43,12 @@
 
 <h1>Blocks</h1>
 
+<%= form_tag(collection_path, method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <div id="container" class="centered">
   <div id="photos" class="cwclearfix">
 
