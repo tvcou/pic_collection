@@ -46,3 +46,4 @@ end
 gem 'carrierwave'
 gem 'acts-as-taggable-on'
 
+gem 'natto'

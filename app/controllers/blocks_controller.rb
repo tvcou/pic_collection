@@ -25,6 +25,10 @@ class BlocksController < ApplicationController
 
   def create
     @block = Block.new(block_params)
+    nm = Natto::MeCab.new("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/")
+    nm.parse(@block.name) do |n|
+      @block.tag_list.add(n.surface.to_s)
+    end
     if logged_in?
       @block.user_id = session[:user_id]
     end
@@ -40,6 +44,14 @@ class BlocksController < ApplicationController
  
   def update
     if @block.update(block_params)
+      nm = Natto::MeCab.new("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/")
+      nm.parse(@block.name) do |n|
+        @block.tag_list.add(n.surface.to_s)
+      end
+      @block.save
+#      logger.debug '---------------------------------------'
+#      logger.debug @block.tag_list.inspect
+#      logger.debug '---------------------------------------'
       redirect_to blocks_path
     else
       render 'edit'
